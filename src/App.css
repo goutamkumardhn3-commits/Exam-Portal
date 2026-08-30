@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -9,7 +18,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
   background-color: #edf2f7;
 }
 
@@ -328,4 +338,96 @@ body {
 
 .text-primary {
   color: #3182ce;
+}
+
+@media (max-width: 900px) {
+  .exam-body {
+    flex-direction: column;
+  }
+
+  .question-panel {
+    border-right: none;
+    border-bottom: 1px solid #cbd5e0;
+  }
+
+  .palette-panel {
+    flex: 1;
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .welcome-card, .result-card {
+    padding: 24px 18px;
+  }
+
+  .brand-row {
+    flex-wrap: wrap;
+  }
+
+  .exam-header,
+  .exam-subheader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .candidate-info {
+    text-align: left;
+  }
+
+  .question-panel,
+  .palette-panel {
+    padding: 16px;
+  }
+
+  .question-text {
+    font-size: 1rem;
+  }
+
+  .footer-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .palette-btn {
+    width: 100%;
+    min-width: 32px;
+  }
+
+  .result-stats {
+    gap: 10px;
+  }
+
+  .stat-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 420px) {
+  .welcome-container, .result-container {
+    padding: 12px;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .section-name,
+  .timer {
+    font-size: 0.9rem;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
