@@ -5,12 +5,18 @@
 html, body, #root {
   width: 100%;
   min-height: 100%;
+  height: 100%;
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f6f9;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 /* Welcome Page Styling */
@@ -105,11 +111,12 @@ body {
 .exam-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 1300px;
   margin: 0 auto;
   border: 1px solid #ccc;
   background: #fff;
+  overflow: hidden;
 }
 
 .exam-header {
@@ -154,7 +161,8 @@ body {
 .exam-body {
   display: flex;
   flex: 1;
-  overflow: hidden;
+  min-height: 0;
+  overflow: visible;
 }
 
 .question-panel {
@@ -343,6 +351,7 @@ body {
 @media (max-width: 900px) {
   .exam-body {
     flex-direction: column;
+    overflow: visible;
   }
 
   .question-panel {
@@ -353,6 +362,91 @@ body {
   .palette-panel {
     flex: 1;
     min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  html, body, #root {
+    height: auto;
+    min-height: 100%;
+  }
+
+  .exam-container {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+  }
+
+  .exam-header,
+  .exam-subheader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .candidate-info {
+    text-align: left;
+  }
+
+  .question-panel,
+  .palette-panel {
+    padding: 16px;
+  }
+
+  .question-text {
+    font-size: 1rem;
+  }
+
+  .footer-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .palette-btn {
+    width: 100%;
+    min-width: 32px;
+  }
+
+  .result-stats {
+    gap: 10px;
+  }
+
+  .stat-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 420px) {
+  .welcome-container, .result-container {
+    padding: 12px;
+  }
+
+  .question-panel,
+  .palette-panel {
+    padding: 14px;
+  }
+
+  .option-item {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .welcome-card, .result-card {
+    padding: 24px 18px;
+  }
+
+  .brand-row {
+    flex-wrap: wrap;
   }
 }
 
