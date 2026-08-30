@@ -23,9 +23,31 @@ body {
   text-align: center;
 }
 
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .welcome-card h2 {
   color: #1a365d;
-  margin-bottom: 8px;
+  margin: 0;
+}
+
+.app-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.app-logo-header {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 
 .welcome-card p {
@@ -90,6 +112,9 @@ body {
 }
 
 .header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 1.2rem;
   font-weight: bold;
 }
