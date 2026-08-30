@@ -173,7 +173,7 @@ function App() {
           <p>Please enter your details to begin the test.</p>
           <form onSubmit={handleStartExam} className="welcome-form">
             <div className="form-group">
-              <label>Candidate Name:</label>
+              <label>Candidate Name :</label>
               <input
                 type="text"
                 placeholder="Enter your full name"
