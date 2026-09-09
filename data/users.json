@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1788976957646",
+    "name": "Test",
+    "email": "test@test.com",
+    "passwordHash": "$2b$10$egviS2geW7XMNOHWwxxBFeCnXOZcZoAsU9bJHBOxRPvxHr4o1xSuy"
+  },
+  {
+    "id": "1788977019509",
+    "name": "Goutam Kumar",
+    "email": "goutam@mail.com",
+    "passwordHash": "$2b$10$CZgCUalOwSrEQa/r1hBr6.XiMqFmDRQ1b0wP0kuraYIXfGC1uxT3e"
+  }
+]
