@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 function LoginScreen({ onLogin }) {
-  const [isRegistering, setIsRegistering] = useState(false);
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -11,21 +9,16 @@ function LoginScreen({ onLogin }) {
     event.preventDefault();
     setError('');
 
-    if ((isRegistering && !name.trim()) || !email.trim() || !password) {
-      setError(isRegistering ? 'Enter your name, email, and password.' : 'Enter your email and password to continue.');
-      return;
-    }
-
-    if (isRegistering && password.length < 8) {
-      setError('Password must be at least 8 characters.');
+    if (!email.trim() || !password) {
+      setError('Enter your email and password to continue.');
       return;
     }
 
     try {
-      const response = await fetch(isRegistering ? '/api/auth/register' : '/api/auth/login', {
+      const response = await fetch('https://loginbackends-nyzo.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), password })
+        body: JSON.stringify({ email: email.trim(), password })
       });
       const data = await response.json();
 
@@ -34,9 +27,9 @@ function LoginScreen({ onLogin }) {
         return;
       }
 
-      onLogin(data);
+      onLogin(data, email.trim());
     } catch (requestError) {
-      setError('The login service is unavailable. Start the backend and try again.');
+      setError('The login service is unavailable. Please try again.');
     }
   };
 
@@ -45,27 +38,12 @@ function LoginScreen({ onLogin }) {
       <section className="login-card" aria-labelledby="login-title">
         <div className="login-mark" aria-hidden="true">EP</div>
         <p className="eyebrow">Exam Portal</p>
-        <h1 id="login-title">{isRegistering ? 'Create your account' : 'Welcome back'}</h1>
+        <h1 id="login-title">Welcome back</h1>
         <p className="login-description">
-          {isRegistering ? 'Register to start taking examinations.' : 'Sign in to access your examination dashboard.'}
+          Sign in to access your examination dashboard.
         </p>
 
         <form onSubmit={handleSubmit} className="login-form">
-          {isRegistering && (
-            <div className="form-group">
-              <label htmlFor="name">Full name</label>
-              <input
-                id="name"
-                type="text"
-                autoComplete="name"
-                placeholder="Enter your full name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                required
-              />
-            </div>
-          )}
-
           <div className="form-group">
             <label htmlFor="email">Email address</label>
             <input
@@ -94,24 +72,10 @@ function LoginScreen({ onLogin }) {
 
           {error && <p className="form-error" role="alert">{error}</p>}
           <button type="submit" className="btn login-btn">
-            {isRegistering ? 'Create account' : 'Sign in'}
+            Sign in
           </button>
         </form>
 
-        <button
-          type="button"
-          className="text-btn"
-          onClick={() => {
-            setIsRegistering((current) => !current);
-            setError('');
-          }}
-        >
-          {isRegistering ? 'Already have an account? Sign in' : 'New candidate? Create an account'}
-        </button>
-
-        {!isRegistering && (
-          <p className="login-note">Demo account: candidate@example.com / password123</p>
-        )}
       </section>
     </main>
   );

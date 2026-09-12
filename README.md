@@ -1,10 +1,8 @@
 # Getting Started with Create React App
 
-## Backend login
+## Login
 
-Start both the API and React app together with `npm run dev`. Alternatively, run `npm run server` and `npm start` in separate terminals.
-
-The demo login is `candidate@example.com` with password `password123`. New accounts are stored in `data/users.json` with hashed passwords. Configure `DEMO_USER_EMAIL`, `DEMO_USER_PASSWORD`, and `JWT_SECRET` in the environment before using this outside local development.
+The app sends login requests to `https://loginbackends-nyzo.onrender.com/login`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

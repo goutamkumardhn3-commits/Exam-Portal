@@ -4,10 +4,7 @@ import App from './App';
 test('renders the login screen and opens the candidate screen', async () => {
   global.fetch = jest.fn().mockResolvedValue({
     ok: true,
-    json: async () => ({
-      user: { email: 'candidate@example.com' },
-      token: 'test-token'
-    })
+    json: async () => ({ message: 'Login successful' })
   });
 
   render(<App />);
@@ -26,4 +23,9 @@ test('renders the login screen and opens the candidate screen', async () => {
     expect(screen.getByText(/online examination portal/i)).toBeInTheDocument();
     expect(screen.getByText(/candidate@example.com/i)).toBeInTheDocument();
   });
+
+  expect(global.fetch).toHaveBeenCalledWith(
+    'https://loginbackends-nyzo.onrender.com/login',
+    expect.objectContaining({ method: 'POST' })
+  );
 });

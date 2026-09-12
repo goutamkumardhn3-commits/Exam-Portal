@@ -77,9 +77,14 @@ function App() {
     setStep('exam');
   };
 
-  const handleLogin = ({ user, token }) => {
-    setUserEmail(user.email);
-    window.localStorage.setItem('examPortalToken', token);
+  const handleLogin = (loginData, email) => {
+    const userEmail = loginData.user?.email || loginData.email || email;
+    setUserEmail(userEmail);
+
+    if (loginData.token) {
+      window.localStorage.setItem('examPortalToken', loginData.token);
+    }
+
     setStep('welcome');
   };
 
