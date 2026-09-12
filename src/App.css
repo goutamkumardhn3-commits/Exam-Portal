@@ -98,6 +98,12 @@ body {
   font-size: 0.85rem;
 }
 
+.form-success {
+  margin: -4px 0 0;
+  color: #2f855a;
+  font-size: 0.85rem;
+}
+
 .login-note {
   margin: 24px 0 0;
   color: #718096;
